@@ -1,3 +1,6 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
 # Git branch
 gb() {
         echo -n '(' && git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' && echo  -n ')'
@@ -5,6 +8,7 @@ gb() {
 git_branch() {
         gb | sed 's/()//'
 }
+
 # Colors
 txtblk="$(tput setaf 0 2>/dev/null || echo '\e[0;30m')"  # Black
 txtred="$(tput setaf 1 2>/dev/null || echo '\e[0;31m')"  # Red
@@ -39,6 +43,14 @@ alias l='ls -CF'
 # Make bash append rather than overwrite the history on disk
 shopt -s histappend
 shopt -s checkwinsize
+
+# Don't put duplicate lines in the history.
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+
+# Ignore some controlling instructions
+# HISTIGNORE is a colon-delimited list of patterns which should be excluded.
+# The '&amp;' is a special pattern which suppresses duplicate entries.
+export HISTIGNORE=$'[ \t]*:&amp;:[fb]g:exit'
 
 # Complete ssh hosts
 _complete_ssh_hosts ()

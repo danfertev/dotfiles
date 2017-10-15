@@ -1,0 +1,19 @@
+[user]
+	name = Denis Anfertev
+	email = danfertev@yandex-team.ru
+[alias]
+	up = pull --ff-only --all -p
+[difftool "kdiff3"]
+    path = /usr/local/bin/kdiff3
+    trustExitCode = false
+[difftool]
+    prompt = false
+[diff]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    path = /usr/local/bin/kdiff3
+    trustExitCode = false
+[mergetool]
+    keepBackup = false
+[merge]
+    tool = kdiff3
