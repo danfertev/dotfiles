@@ -40,6 +40,9 @@ alias ll='ls -alF'
 alias la='ls -AF'
 alias l='ls -CF'
 
+alias wget='wget --no-check-certificate'
+alias tailf='tail -f'
+
 # Make bash append rather than overwrite the history on disk
 shopt -s histappend
 shopt -s checkwinsize
